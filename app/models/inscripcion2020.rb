@@ -2,7 +2,7 @@ class Inscripcion2020 < ApplicationRecord
   belongs_to :proximo_grado
 
   def self.FindInscripcion(a)
-    return Inscripcion2020.where("alumno_id=#{a} AND reinscripcion AND #{ConsultaFecha()}").first rescue nil
+    return Inscripcion2020.where("alumno_id=#{a} AND reinscripcion AND #{ConsultaFecha()}").order(anio: :desc).first rescue nil
   end
 
   def PuedeInscribir()
@@ -194,7 +194,7 @@ class Inscripcion2020 < ApplicationRecord
   #   end
 
   #   if devolucion > 0 
-  #     mov = [fecha_ultima,"DEVOLUCIÓN CUOTAS",-devolucion,proximo_grado.rubro_id]
+  #     mov = [fecha_ultima,"DEVOLUCIÃ“N CUOTAS",-devolucion,proximo_grado.rubro_id]
   #     movimientos.push(mov)
   #   end
 
@@ -222,7 +222,7 @@ class Inscripcion2020 < ApplicationRecord
   #         fecha = cuota[1] + (x-1).month
   #         importe = importe_total*cuota[2]/cuota[3]
 
-  #         mov = [fecha,"Matrícula #{anio} #{num_cuota}/#{total_cuotas}",(importe+0.5).to_i,proximo_grado.matricula_rubro]
+  #         mov = [fecha,"MatrÃ­cula #{anio} #{num_cuota}/#{total_cuotas}",(importe+0.5).to_i,proximo_grado.matricula_rubro]
   #         movimientos.push(mov)
 
   #         num_cuota = num_cuota+1
